@@ -71,15 +71,14 @@ const resolvers = {
         (review) => review.product === product.id
       );
       return allReviews.length
-        ? allReviews.reduce((acc, review) => {
-            return acc + review.rating;
-          }, 0) / allReviews.length
+        ? allReviews.reduce((acc, review) => acc + review.rating, 0) /
+            allReviews.length
         : 0;
     },
   },
   Review: {
     product(review) {
-      // return a review representation
+      // return a product representation
       return { __typename: "Product", id: review.product };
     },
   },
